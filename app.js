@@ -39,6 +39,10 @@ app.listen(port,()=>{
     console.log("Listening to port");
 }); 
 
+app.get("/",(req,res)=>{
+     res.redirect("/listings");
+});
+
 const store=MongoStore.create({
     mongoUrl:atlas_db_url,
     crypto:{

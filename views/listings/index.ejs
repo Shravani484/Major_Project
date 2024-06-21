@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <br>
+    <div id="filters">
+        <div class="filter" >
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Farms">
+                <div><i class="fa-solid fa-tractor" id="Farms"></i></div>
+                <button class="i-btn">Farms</button>
+            </form>  
+        </div>
+        <div class="filter" >
+           <form action="/listings/category" method="GET">
+              <input type="text" class="nodisplayinp" name="category" value="Trending">
+              <div><i class="fa-solid fa-fire" id="Trending"></i></div>
+              <button class="i-btn">Trending</button>
+           </form>
+        </div>
+        <div class="filter" >
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Bread and Breakfast">
+                <div><i class="fa-solid fa-mug-saucer" id="BreadandBreakfast"></i></div>
+                <button class="i-btn">Bread and Breakfast</button>
+            </form>
+        </div>
+        <div class="filter">
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Water Pools">
+                <div><i class="fa-solid fa-person-swimming"  id="WaterPools"></i></div>
+                <button class="i-btn">Water Pools</button>
+            </form>
+        </div>
+        <div class="filter">
+            <form action="/listings/category" method="GET">
+              <input type="text" class="nodisplayinp" name="category" value="Mountains">
+              <div><i class="fa-solid fa-mountain-sun"  id="Moutains"></i></div>
+              <button class="i-btn">Moutains</button>
+            </form>
+        </div>
+        <div class="filter" >
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Beaches">
+                <div><i class="fa-solid fa-umbrella-beach" id="Beaches"></i></div>
+                <button class="i-btn">Beaches</button>
+            </form>
+        </div>
+        <div class="filter">
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Arctic">
+                <div><i class="fa-sharp fa-solid fa-snowflake"  id="Arctic"></i></div>
+                <button class="i-btn">Arctic</button>
+            </form>
+         </div>
+         <div class="filter" >
+            <form action="/listings/category" method="GET">
+                <input type="text" class="nodisplayinp" name="category" value="Crusie">
+                <div><i class="fa-solid fa-ship" id="Crusie"></i></div>
+                <button class="i-btn">Cruise</button>
+            </form>
+         </div>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+              </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+        <%for(list of lists){%>
+            <a href="/listings/<%=list._id%>" class="listing-link">
+                <div class="card col listing-card" style="width: 18rem;">
+                    <img src="<%=list.image.url%>" class="card-img-top" style="height: 15rem;" alt="listing_image">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <b><%=list.title%></b> <br>
+                        &#8377;<%=list.price.toLocaleString("en-IN")%>/Night
+                        <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                    </p>
+                    </div>
+                  </div>
+            </a>
+        <%}%>
+    </div>
+</body>
+
+<script>
+    let taxswitch=document.getElementById("flexSwitchCheckDefault");
+    taxswitch.addEventListener("click",()=>{
+        let taxinfo=document.getElementsByClassName("tax-info");
+        for(info of taxinfo){
+            if(info.style.display!="inline"){
+                info.style.display="inline";
+            }else{
+                info.style.display="none";
+            }
+        }
+    })
+</script>

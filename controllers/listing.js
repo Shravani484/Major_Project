@@ -67,9 +67,8 @@ module.exports.updateListing=async (req,res)=>{
         let url=req.file.path;
         let filename=req.file.filename;
         editlisting.image={url,filename};
-        await editlisting.save();
     }
-    
+    await editlisting.save();
     req.flash("success","Listing Updated!");
     res.redirect(`/listings/${id}`);
 };

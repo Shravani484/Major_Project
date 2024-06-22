@@ -54,7 +54,7 @@ module.exports.renderUpdateForm=async (req,res)=>{
       res.redirect("/listings");
     }
     let originalImageUrl=data.image.url;
-    originalImageUrl=originalImageUrl.replace("/upload","/upload/w_250");
+    originalImageUrl=originalImageUrl.replace("/upload","/upload/w_250/h_200");
     
     res.render("listings/update.ejs",{data,originalImageUrl});
 };
